@@ -33,12 +33,13 @@ enum ESortMethod
 {
   SORT_BUBBLE,
   SORT_SELECTION,
-  SORT_INSERTION
+  SORT_INSERTION,
+  SORT_MERGE
 };
 
 void SortArrayTest(std::string const & title, ESortMethod method)
 {
-  size_t const COLLECTION_SIZE = 10;
+  size_t const COLLECTION_SIZE = 30;
   int const maxValue = 100;
 
   {
@@ -55,6 +56,8 @@ void SortArrayTest(std::string const & title, ESortMethod method)
         break;
       case SORT_INSERTION: sort::InsertionSort(b, e);
         break;
+      case SORT_MERGE: sort::MergeSort(b, e);
+        break;
       default:
         assert(false);
     }
@@ -66,9 +69,11 @@ int main()
 {
   using TClock = std::chrono::system_clock;
   std::srand(TClock::now().time_since_epoch().count());
+  //std::srand(50);
 
   SortArrayTest("Bubble sort : ", SORT_BUBBLE);
   SortArrayTest("Selection sort : ", SORT_SELECTION);
   SortArrayTest("Insertion sort : ", SORT_INSERTION);
+  SortArrayTest("Merge sort : ", SORT_MERGE);
   return 0;
 }

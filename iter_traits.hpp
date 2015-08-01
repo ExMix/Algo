@@ -26,6 +26,9 @@ template<typename TIter>
 struct ForwardIterCheck : BaseIterCheck<TIter, std::forward_iterator_tag> {};
 
 template<typename TIter>
+struct OutputIterCheck : BaseIterCheck<TIter, std::output_iterator_tag> {};
+
+template<typename TIter>
 void SwapValues(TIter & iter1, TIter & iter2)
 {
   std::swap(*iter1, *iter2);
